@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {% block title %}{{ title or "Job Application Tracker" }}{% endblock %}
+    </title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="logo" href="{{ url_for('page_dashboard') }}">Job Tracker</a>
+        <nav class="nav" aria-label="Main">
+          <a href="{{ url_for('page_dashboard') }}">Dashboard</a>
+          <a href="{{ url_for('page_companies') }}">Companies</a>
+          <a href="{{ url_for('page_jobs') }}">Jobs</a>
+          <a href="{{ url_for('page_applications') }}">Applications</a>
+          <a href="{{ url_for('page_contacts') }}">Contacts</a>
+          <a href="{{ url_for('page_job_match') }}">Job match</a>
+        </nav>
+      </div>
+    </header>
+
+    <div id="page-error" class="page-error" role="alert" hidden></div>
+
+    <main id="main" class="main">{% block content %}{% endblock %}</main>
+
+    <footer class="site-footer">
+      <p>COP4751 - Spring 2026</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ui.js') }}"></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

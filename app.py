@@ -1,22 +1,24 @@
 """
-Job Application Tracker — JSON API for Postman / future frontend.
+Job Application Tracker — JSON API + server-rendered UI shells (data via fetch).
 SQL lives in queries.py; routes execute those statements here.
 """
 
 from __future__ import annotations
 
 import json
+import os
 import re
 from datetime import date, datetime
 from decimal import Decimal
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, render_template, request
 from mysql.connector import Error as MySQLError
 
 from database import get_db
 import queries as q
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-change-in-production")
 
 
 def serialize_value(value):
@@ -717,6 +719,39 @@ def job_match():
 
     ranked.sort(key=lambda x: (-x["match_percent"], x["job_id"]))
     return jsonify({"matches": ranked})
+
+
+# --- UI pages (plain HTML + JS fetch to /api) ---------------------------------
+
+
+@app.get("/")
+def page_dashboard():
+    return render_template("dashboard.html")
+
+
+@app.get("/companies")
+def page_companies():
+    return render_template("companies.html")
+
+
+@app.get("/jobs")
+def page_jobs():
+    return render_template("jobs.html")
+
+
+@app.get("/applications")
+def page_applications():
+    return render_template("applications.html")
+
+
+@app.get("/contacts")
+def page_contacts():
+    return render_template("contacts.html")
+
+
+@app.get("/job-match")
+def page_job_match():
+    return render_template("job_match.html")
 
 
 if __name__ == "__main__":

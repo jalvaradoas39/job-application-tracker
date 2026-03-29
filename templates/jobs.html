@@ -1,0 +1,88 @@
+{% extends "base.html" %} {% block title %}Jobs · Job Application Tracker{%
+endblock %} {% block content %}
+<h1 class="page-title">Jobs</h1>
+<p class="page-lead">Open roles by company</p>
+
+<div class="toolbar">
+  <button type="button" class="btn btn--primary" id="btn-add-job">
+    Add job
+  </button>
+</div>
+
+<div id="jobs-container" class="loading">Loading…</div>
+
+<dialog class="modal" id="job-dialog" aria-labelledby="job-dialog-title">
+  <div class="modal__header">
+    <h2 id="job-dialog-title">Job</h2>
+    <button
+      type="button"
+      class="btn btn--ghost btn--small"
+      data-close="job-dialog"
+    >
+      Close
+    </button>
+  </div>
+  <form id="job-form">
+    <div class="modal__body">
+      <input type="hidden" id="job-id" value="" />
+      <div class="form-grid form-grid--2">
+        <div class="form-field" style="grid-column: 1/-1">
+          <label for="job_company_id">Company *</label>
+          <select id="job_company_id" required></select>
+        </div>
+        <div class="form-field" style="grid-column: 1/-1">
+          <label for="job_title">Job title *</label>
+          <input id="job_title" required />
+        </div>
+        <div class="form-field" style="grid-column: 1/-1">
+          <label for="job_description">Description</label>
+          <textarea id="job_description" rows="3"></textarea>
+        </div>
+        <div class="form-field">
+          <label for="salary_min">Salary min</label>
+          <input id="salary_min" type="number" step="0.01" />
+        </div>
+        <div class="form-field">
+          <label for="salary_max">Salary max</label>
+          <input id="salary_max" type="number" step="0.01" />
+        </div>
+        <div class="form-field">
+          <label for="job_type">Job type</label>
+          <input id="job_type" placeholder="e.g. Full-time" />
+        </div>
+        <div class="form-field">
+          <label for="date_posted">Date posted</label>
+          <input id="date_posted" type="date" />
+        </div>
+        <div class="form-field" style="grid-column: 1/-1">
+          <label for="posting_url">Posting URL</label>
+          <input id="posting_url" type="url" />
+        </div>
+        <div class="form-field checkbox-field" style="grid-column: 1/-1">
+          <input type="checkbox" id="is_active" checked />
+          <label for="is_active">Active listing</label>
+        </div>
+        <div class="form-field" style="grid-column: 1/-1">
+          <label for="requirements">Requirements (JSON)</label>
+          <span class="hint"
+            >Array of skills, e.g. <code>["Python","SQL"]</code></span
+          >
+          <textarea
+            id="requirements"
+            rows="4"
+            placeholder='["Python", "SQL"]'
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal__footer">
+      <button type="button" class="btn btn--ghost" data-close="job-dialog">
+        Cancel
+      </button>
+      <button type="submit" class="btn btn--primary">Save</button>
+    </div>
+  </form>
+</dialog>
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/jobs.js') }}"></script>
+{% endblock %}

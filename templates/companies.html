@@ -1,0 +1,69 @@
+{% extends "base.html" %} {% block title %}Companies · Job Application Tracker{%
+endblock %} {% block content %}
+<h1 class="page-title">Companies</h1>
+<p class="page-lead">Employers you're tracking</p>
+
+<div class="toolbar">
+  <button type="button" class="btn btn--primary" id="btn-add-company">
+    Add company
+  </button>
+</div>
+
+<div id="companies-container" class="loading">Loading…</div>
+
+<dialog
+  class="modal"
+  id="company-dialog"
+  aria-labelledby="company-dialog-title"
+>
+  <div class="modal__header">
+    <h2 id="company-dialog-title">Company</h2>
+    <button
+      type="button"
+      class="btn btn--ghost btn--small"
+      data-close="company-dialog"
+    >
+      Close
+    </button>
+  </div>
+  <form id="company-form">
+    <div class="modal__body">
+      <input type="hidden" id="company-id" value="" />
+      <div class="form-grid">
+        <div class="form-field" style="grid-column: 1/-1">
+          <label for="company_name">Company name *</label>
+          <input id="company_name" required />
+        </div>
+        <div class="form-field">
+          <label for="industry">Industry</label>
+          <input id="industry" />
+        </div>
+        <div class="form-field">
+          <label for="website">Website</label>
+          <input id="website" />
+        </div>
+        <div class="form-field">
+          <label for="city">City</label>
+          <input id="city" />
+        </div>
+        <div class="form-field">
+          <label for="state">State</label>
+          <input id="state" />
+        </div>
+        <div class="form-field" style="grid-column: 1/-1">
+          <label for="notes">Notes</label>
+          <textarea id="notes" rows="3"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal__footer">
+      <button type="button" class="btn btn--ghost" data-close="company-dialog">
+        Cancel
+      </button>
+      <button type="submit" class="btn btn--primary">Save</button>
+    </div>
+  </form>
+</dialog>
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/companies.js') }}"></script>
+{% endblock %}

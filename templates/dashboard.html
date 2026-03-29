@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %}Dashboard · Job Application Tracker{%
+endblock %} {% block content %}
+<h1 class="page-title">Dashboard</h1>
+<p class="page-lead">Snapshot of your search</p>
+
+<section class="card" aria-labelledby="stats-heading">
+  <h2 id="stats-heading" class="visually-hidden">Statistics</h2>
+  <div id="dashboard-stats" class="loading">Loading statistics…</div>
+</section>
+
+<section class="card" aria-labelledby="status-heading">
+  <h2
+    id="status-heading"
+    class="page-title"
+    style="font-size: 1.25rem; margin-bottom: 1rem"
+  >
+    Applications by status
+  </h2>
+  <div id="dashboard-by-status" class="loading">Loading…</div>
+</section>
+{% endblock %} {% block scripts %}
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+</style>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

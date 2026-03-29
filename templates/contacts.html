@@ -1,0 +1,77 @@
+{% extends "base.html" %} {% block title %}Contacts · Job Application Tracker{%
+endblock %} {% block content %}
+<h1 class="page-title">Contacts</h1>
+<p class="page-lead">People to follow up with</p>
+
+<div class="toolbar">
+  <button type="button" class="btn btn--primary" id="btn-add-contact">
+    Add contact
+  </button>
+</div>
+
+<div id="contacts-container" class="loading">Loading…</div>
+
+<dialog
+  class="modal"
+  id="contact-dialog"
+  aria-labelledby="contact-dialog-title"
+>
+  <div class="modal__header">
+    <h2 id="contact-dialog-title">Contact</h2>
+    <button
+      type="button"
+      class="btn btn--ghost btn--small"
+      data-close="contact-dialog"
+    >
+      Close
+    </button>
+  </div>
+  <form id="contact-form">
+    <div class="modal__body">
+      <input type="hidden" id="contact-id" value="" />
+      <div class="form-grid form-grid--2">
+        <div class="form-field" style="grid-column: 1/-1">
+          <label for="contact_company_id">Company *</label>
+          <select id="contact_company_id" required></select>
+        </div>
+        <div class="form-field">
+          <label for="first_name">First name *</label>
+          <input id="first_name" required />
+        </div>
+        <div class="form-field">
+          <label for="last_name">Last name *</label>
+          <input id="last_name" required />
+        </div>
+        <div class="form-field">
+          <label for="contact_email">Email</label>
+          <input id="contact_email" type="email" />
+        </div>
+        <div class="form-field">
+          <label for="contact_phone">Phone</label>
+          <input id="contact_phone" />
+        </div>
+        <div class="form-field" style="grid-column: 1/-1">
+          <label for="contact_job_title">Job title</label>
+          <input id="contact_job_title" />
+        </div>
+        <div class="form-field" style="grid-column: 1/-1">
+          <label for="linkedin_url">LinkedIn URL</label>
+          <input id="linkedin_url" type="url" />
+        </div>
+        <div class="form-field" style="grid-column: 1/-1">
+          <label for="contact_notes">Notes</label>
+          <textarea id="contact_notes" rows="2"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal__footer">
+      <button type="button" class="btn btn--ghost" data-close="contact-dialog">
+        Cancel
+      </button>
+      <button type="submit" class="btn btn--primary">Save</button>
+    </div>
+  </form>
+</dialog>
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/contacts.js') }}"></script>
+{% endblock %}

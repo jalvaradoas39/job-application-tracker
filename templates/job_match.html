@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block title %}Job match · Job Application Tracker{%
+endblock %} {% block content %}
+<h1 class="page-title">Job match</h1>
+<p class="page-lead">Rank active jobs by how well your skills match</p>
+
+<div class="card">
+  <div class="form-field">
+    <label for="skills-input">Your skills</label>
+    <textarea
+      id="skills-input"
+      rows="4"
+      placeholder="Python, SQL, Flask"
+    ></textarea>
+  </div>
+  <div class="toolbar" style="margin-top: 1rem; margin-bottom: 0">
+    <button type="button" class="btn btn--primary" id="btn-run-match">
+      Find matches
+    </button>
+  </div>
+</div>
+
+<div id="match-results" class="card" hidden>
+  <h2 class="page-title" style="font-size: 1.25rem; margin-bottom: 1rem">
+    Results
+  </h2>
+  <div id="match-table-wrap"></div>
+</div>
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/job_match.js') }}"></script>
+{% endblock %}

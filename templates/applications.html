@@ -1,0 +1,85 @@
+{% extends "base.html" %} {% block title %}Applications · Job Application
+Tracker{% endblock %} {% block content %}
+<h1 class="page-title">Applications</h1>
+<p class="page-lead">Where each application stands</p>
+
+<div class="toolbar">
+  <button type="button" class="btn btn--primary" id="btn-add-application">
+    Add application
+  </button>
+</div>
+
+<div id="applications-container" class="loading">Loading…</div>
+
+<dialog
+  class="modal"
+  id="application-dialog"
+  aria-labelledby="application-dialog-title"
+>
+  <div class="modal__header">
+    <h2 id="application-dialog-title">Application</h2>
+    <button
+      type="button"
+      class="btn btn--ghost btn--small"
+      data-close="application-dialog"
+    >
+      Close
+    </button>
+  </div>
+  <form id="application-form">
+    <div class="modal__body">
+      <input type="hidden" id="application-id" value="" />
+      <div class="form-grid form-grid--2">
+        <div class="form-field" style="grid-column: 1/-1">
+          <label for="app_job_id">Job *</label>
+          <select id="app_job_id" required></select>
+        </div>
+        <div class="form-field">
+          <label for="application_date">Application date *</label>
+          <input id="application_date" type="date" required />
+        </div>
+        <div class="form-field">
+          <label for="app_status">Status</label>
+          <input id="app_status" placeholder="Applied" />
+        </div>
+        <div class="form-field">
+          <label for="resume_version">Resume version</label>
+          <input id="resume_version" />
+        </div>
+        <div class="form-field checkbox-field">
+          <input type="checkbox" id="cover_letter_sent" />
+          <label for="cover_letter_sent">Cover letter sent</label>
+        </div>
+        <div class="form-field">
+          <label for="response_date">Response date</label>
+          <input id="response_date" type="date" />
+        </div>
+        <div class="form-field">
+          <label for="interview_date">Interview date/time</label>
+          <input id="interview_date" type="datetime-local" />
+        </div>
+        <div class="form-field" style="grid-column: 1/-1">
+          <label for="app_notes">Notes</label>
+          <textarea id="app_notes" rows="2"></textarea>
+        </div>
+        <div class="form-field" style="grid-column: 1/-1">
+          <label for="interview_data">Interview data (JSON)</label>
+          <textarea id="interview_data" rows="3" placeholder="{}"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal__footer">
+      <button
+        type="button"
+        class="btn btn--ghost"
+        data-close="application-dialog"
+      >
+        Cancel
+      </button>
+      <button type="submit" class="btn btn--primary">Save</button>
+    </div>
+  </form>
+</dialog>
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/applications.js') }}"></script>
+{% endblock %}
