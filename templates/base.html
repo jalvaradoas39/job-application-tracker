@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
     <title>
       {% block title %}{{ title or "Job Application Tracker" }}{% endblock %}
     </title>
@@ -15,14 +16,50 @@
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="site-header__inner">
-        <a class="logo" href="{{ url_for('page_dashboard') }}">Job Tracker</a>
-        <nav class="nav" aria-label="Main">
-          <a href="{{ url_for('page_dashboard') }}">Dashboard</a>
-          <a href="{{ url_for('page_companies') }}">Companies</a>
-          <a href="{{ url_for('page_jobs') }}">Jobs</a>
-          <a href="{{ url_for('page_applications') }}">Applications</a>
-          <a href="{{ url_for('page_contacts') }}">Contacts</a>
-          <a href="{{ url_for('page_job_match') }}">Job match</a>
+        <a class="brand" href="{{ url_for('page_dashboard') }}">
+          <span class="brand__mark" aria-hidden="true">JT</span>
+          <span class="brand__text">
+            <span class="brand__name">Job Tracker</span>
+            <span class="brand__tag">Application hub</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          <a
+            href="{{ url_for('page_dashboard') }}"
+            class="nav__link{% if request.endpoint == 'page_dashboard' %} nav__link--active{% endif %}"
+            {% if request.endpoint == 'page_dashboard' %}aria-current="page"{% endif %}
+            >Dashboard</a
+          >
+          <a
+            href="{{ url_for('page_companies') }}"
+            class="nav__link{% if request.endpoint == 'page_companies' %} nav__link--active{% endif %}"
+            {% if request.endpoint == 'page_companies' %}aria-current="page"{% endif %}
+            >Companies</a
+          >
+          <a
+            href="{{ url_for('page_jobs') }}"
+            class="nav__link{% if request.endpoint == 'page_jobs' %} nav__link--active{% endif %}"
+            {% if request.endpoint == 'page_jobs' %}aria-current="page"{% endif %}
+            >Jobs</a
+          >
+          <a
+            href="{{ url_for('page_applications') }}"
+            class="nav__link{% if request.endpoint == 'page_applications' %} nav__link--active{% endif %}"
+            {% if request.endpoint == 'page_applications' %}aria-current="page"{% endif %}
+            >Applications</a
+          >
+          <a
+            href="{{ url_for('page_contacts') }}"
+            class="nav__link{% if request.endpoint == 'page_contacts' %} nav__link--active{% endif %}"
+            {% if request.endpoint == 'page_contacts' %}aria-current="page"{% endif %}
+            >Contacts</a
+          >
+          <a
+            href="{{ url_for('page_job_match') }}"
+            class="nav__link{% if request.endpoint == 'page_job_match' %} nav__link--active{% endif %}"
+            {% if request.endpoint == 'page_job_match' %}aria-current="page"{% endif %}
+            >Job match</a
+          >
         </nav>
       </div>
     </header>

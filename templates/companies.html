@@ -1,7 +1,10 @@
-{% extends "base.html" %} {% block title %}Companies · Job Application Tracker{%
-endblock %} {% block content %}
-<h1 class="page-title">Companies</h1>
-<p class="page-lead">Employers you're tracking</p>
+{% extends "base.html" %}
+{% block title %}Companies · Job Application Tracker{% endblock %}
+{% block content %}
+<header class="page-header">
+  <h1 class="page-title">Companies</h1>
+  <p class="page-lead">Employers you're tracking.</p>
+</header>
 
 <div class="toolbar">
   <button type="button" class="btn btn--primary" id="btn-add-company">
@@ -30,7 +33,7 @@ endblock %} {% block content %}
     <div class="modal__body">
       <input type="hidden" id="company-id" value="" />
       <div class="form-grid">
-        <div class="form-field" style="grid-column: 1/-1">
+        <div class="form-field form-field--full">
           <label for="company_name">Company name *</label>
           <input id="company_name" required />
         </div>
@@ -50,7 +53,7 @@ endblock %} {% block content %}
           <label for="state">State</label>
           <input id="state" />
         </div>
-        <div class="form-field" style="grid-column: 1/-1">
+        <div class="form-field form-field--full">
           <label for="notes">Notes</label>
           <textarea id="notes" rows="3"></textarea>
         </div>
@@ -64,6 +67,7 @@ endblock %} {% block content %}
     </div>
   </form>
 </dialog>
-{% endblock %} {% block scripts %}
+{% endblock %}
+{% block scripts %}
 <script src="{{ url_for('static', filename='js/companies.js') }}"></script>
 {% endblock %}
