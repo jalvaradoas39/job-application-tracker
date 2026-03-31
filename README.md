@@ -2,6 +2,10 @@
 
 A full-stack web app for tracking job applications: companies, jobs, applications, contacts, a dashboard, and a skill-based job match view. The UI loads in the browser and talks to a Flask JSON API under `/api`.
 
+## Demo
+
+[Application demo (YouTube)](https://youtu.be/KgHiQsn_wp0)
+
 ## Stack
 
 - **MySQL 8+** (database)
