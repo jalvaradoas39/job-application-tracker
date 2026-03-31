@@ -63,7 +63,7 @@ python3 app.py
 Flask starts in debug mode on **port 5000** by default.
 
 - **Web UI:** [http://127.0.0.1:5000](http://127.0.0.1:5000) (or `http://localhost:5000`)
-- **JSON API:** same host, paths under `/api` (for example `/api/health`, `/api/companies`)
+- **JSON API:** same host, paths under `/api` (for example `/api/dashboard/stats`, `/api/companies`)
 
 Stop the server with `Ctrl+C`.
 

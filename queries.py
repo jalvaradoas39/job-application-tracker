@@ -1,10 +1,3 @@
-"""
-Raw SQL for the Job Application Tracker.
-
-Schema matches MySQL Workbench: companies, jobs, applications, contacts.
-Use parameterized placeholders (%s) for all user-supplied values.
-"""
-
 # --- Dashboard & analytics ----------------------------------------------------
 
 DASHBOARD_STATS = """

@@ -1,8 +1,3 @@
-"""
-Job Application Tracker — JSON API + server-rendered UI shells (data via fetch).
-SQL lives in queries.py; routes execute those statements here.
-"""
-
 from __future__ import annotations
 
 import json
@@ -117,14 +112,6 @@ def compute_skill_match(user_skills: list[str], job_skill_list: list[str]) -> tu
     matched = sum(1 for us in user if us in job_set)
     pct = round(100.0 * matched / len(user), 1)
     return matched, len(user), pct
-
-
-# --- Health -------------------------------------------------------------------
-
-
-@app.get("/api/health")
-def health():
-    return jsonify({"status": "ok"})
 
 
 # --- Dashboard ----------------------------------------------------------------
