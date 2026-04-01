@@ -35,8 +35,6 @@ mysql -u root -p < schema.sql
 
 Or open `schema.sql` in **MySQL Workbench**, select the full script, and execute it.
 
-This creates the `job_tracker` database (if needed) and populates sample rows matching the COP4751 lab baseline.
-
 ## 3. Configure environment variables
 
 In the project root, create a **`.env`** file (do not commit it). All of the following are **required** — the app reads them via `python-dotenv`:
